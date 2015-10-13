@@ -1,0 +1,114 @@
+section {
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	visibility: hidden;
+	background-color: $section_background_color;
+	animation-duration: 800ms;
+	animation-fill-mode: forwards;
+	transform: translateZ(0);
+
+	&[data-presentation-transition="next-in"] {
+		animation-name: nextSlideIn;
+		visibility: visible;
+	}
+
+	&[data-presentation-transition="next-out"] {
+		animation-name: nextSlideOut;
+		visibility: visible;
+	}
+
+	&[data-presentation-transition="prev-in"] {
+		animation-name: prevSlideIn;
+		visibility: visible;
+	}
+
+	&[data-presentation-transition="prev-out"] {
+		animation-name: prevSlideOut;
+		visibility: visible;
+	}
+
+	&[data-presentation-start] {
+		animation-duration: 3000ms;
+		animation-name: fadeIn;
+		visibility: visible;
+
+		h1,
+		abbr {
+			animation-duration: 2000ms;
+			animation-fill-mode: forwards;
+			transform: translateZ(0);
+			animation-name: startSlideIn;
+			visibility: visible;
+		}
+	}
+}
+
+[data-presentation-breakpoint],
+[data-presentation-breakpoint-active] {
+	opacity: 0;
+
+	&.active {
+		transition: opacity 400ms;
+		opacity: 1;
+	}
+}
+
+@keyframes fadeIn {
+	0% {
+		opacity: 0;
+	}
+	100% {
+		opacity: 1;
+	}
+}
+
+@keyframes nextSlideIn {
+	0% {
+		transform: translateX(100%) scale(0.5);
+	}
+	100% {
+		transform: translateX(0) scale(1);
+	}
+}
+
+@keyframes nextSlideOut {
+	0% {
+		transform: translateX(0) scale(1);
+	}
+	100% {
+		transform: translateX(-100%) scale(0.5);
+	}
+}
+
+@keyframes prevSlideIn {
+	0% {
+		transform: translateX(-100%) scale(0.5);
+	}
+	100% {
+		transform: translateX(0) scale(1);
+	}
+}
+
+@keyframes prevSlideOut {
+	0% {
+		transform: translateX(0) scale(1);
+	}
+	100% {
+		transform: translateX(100%) scale(0.5);
+	}
+}
+
+@keyframes startSlideIn {
+	0% {
+		transform: scale(0);
+	}
+	80% {
+		transform: scale(0);
+	}
+	100% {
+		transform: scale(1);
+	}
+}
