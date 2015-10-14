@@ -1,4 +1,4 @@
-// grunt-workflow-presentation | 20151009 | version 1.0.0
+// grunt-workflow-presentation | 20151014 | version 1.1.0
 module.exports = function(grunt) {
 	var dist = '../dist';
 
@@ -46,6 +46,7 @@ module.exports = function(grunt) {
 			'includes:layout',
 			'rename',
 			'cssUrlEmbed',
+			'htmlmin',
 			'clean'
 		]
 	);
@@ -133,13 +134,26 @@ module.exports = function(grunt) {
 			}
 		},
 
+		htmlmin: {
+			default: {
+				options: {
+					removeComments: false,
+					collapseWhitespace: true
+				},
+				files: [{
+					src: [dist +'/index.html'],
+					dest: dist + '/index.html'
+				}]
+			}
+		},
+
 		clean: {
 			options: {
 				force: true
 			},
 			dist: [
 				dist + '/*',
-				'!' + dist + '/*.html',
+				'!' + dist + '/index.html',
 			]
 		},
 
@@ -160,6 +174,7 @@ module.exports = function(grunt) {
 	grunt.loadNpmTasks('grunt-contrib-sass');
 	grunt.loadNpmTasks('grunt-contrib-cssmin');
 	grunt.loadNpmTasks('grunt-contrib-uglify');
+	grunt.loadNpmTasks('grunt-contrib-htmlmin');
 	grunt.loadNpmTasks('grunt-includes');
 	grunt.loadNpmTasks('grunt-autoprefixer');
 	grunt.loadNpmTasks('grunt-css-url-embed');

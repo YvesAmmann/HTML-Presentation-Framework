@@ -32,6 +32,7 @@ npm install grunt-contrib-rename --save-dev
 npm install grunt-contrib-sass --save-dev
 npm install grunt-contrib-cssmin --save-dev
 npm install grunt-contrib-uglify --save-dev
+npm install grunt-contrib-htmlmin --save-dev
 npm install grunt-includes --save-dev
 npm install grunt-autoprefixer --save-dev
 npm install grunt-css-url-embed --save-dev
